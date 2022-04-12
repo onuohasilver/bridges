@@ -1,7 +1,6 @@
 library bridges;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'package:provider/provider.dart';
+
+export 'state/bridge_state/bridge_methods.dart';
+export 'state/bridge_state/bridge_state.dart';
