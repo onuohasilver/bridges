@@ -1,7 +1,7 @@
 import 'package:bridges/state/befa_state.dart';
 import 'package:flutter/cupertino.dart';
 
-class BridgeBase extends ChangeNotifier {
+class BridgeState extends ChangeNotifier {
   final Map<String, dynamic> _data = {};
   Map<String, dynamic> get data => _data;
 
