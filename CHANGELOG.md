@@ -1,3 +1,5 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Simple State Management solution leveraging providers.
+* Works spectacularly for simple application architectures.
+
