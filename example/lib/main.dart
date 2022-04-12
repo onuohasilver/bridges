@@ -1,5 +1,4 @@
-import 'package:bridges/bridges.dart';
-import 'package:bridges/state/bridge_base.dart';
+import 'package:bridge/bridges.dart';
 import 'package:flutter/material.dart';
 
 void main() {
