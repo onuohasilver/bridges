@@ -1,4 +1,4 @@
-import 'package:bridge/state/befa_state.dart';
+import 'package:bridgestate/state/befa_state.dart';
 import 'package:flutter/cupertino.dart';
 
 class BridgeState extends ChangeNotifier {
