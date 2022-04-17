@@ -66,14 +66,17 @@ class BridgeState extends ChangeNotifier {
 
   ///Retrieves a previously saved bridge slice
   BridgeModel read(String name, dynamic initial) {
+    //checks if the key "name" exists and then compares the types
     if (_data.containsKey(name)) {
       Type savedType = _data[name]['slice'].runtimeType;
       Type initialType = initial.runtimeType;
       if (initialType != savedType) {
         throw ('Read' + BridgeErrors.unmatched(name, savedType, initialType));
       }
+      //returns bridgemodel if key exists and there is no type conflict
       return BridgeModel(_data[name]['slice'], _data[name]['type']);
     } else {
+      //returns bridgemodel with initial and type
       return BridgeModel(initial, initial.runtimeType);
     }
   }
@@ -84,10 +87,12 @@ class BridgeState extends ChangeNotifier {
 
     ///first checks if the provided key is already in memory
     if (cache.containsKey(fieldKey)) {
+      //returns bridgemodel if key exists and there is no type conflict
       return BridgeModel(cache[fieldKey], cache[fieldKey].runtimeType);
     }
     //and if not it takes the type of the initial value
     else {
+      //returns bridgemodel with initial and type
       return BridgeModel(initial, initial.runtimeType);
     }
   }
