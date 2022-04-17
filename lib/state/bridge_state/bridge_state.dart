@@ -1,4 +1,4 @@
-import 'package:bridges/state/befa_state.dart';
+import 'package:bridges/state/bridge_state.dart';
 import 'package:flutter/cupertino.dart';
 
 class BridgeState extends ChangeNotifier {
@@ -33,6 +33,7 @@ class BridgeState extends ChangeNotifier {
       [bool override = true, bool exception = false]) {
     Type savedType = slice.runtimeType;
 
+//checks if the type is same with the savedType if slice has been loaded previously into memory
     if (type != savedType) {
       throw ('Load' + BridgeErrors.unmatched(name, savedType, type));
     }
@@ -45,6 +46,7 @@ class BridgeState extends ChangeNotifier {
     notifyListeners();
   }
 
+  ///updates a Map on the bridge
   void updateMap(String sliceName, MapEntry mapEntry) {
     if (_data.containsKey(sliceName)) {
       (_data[sliceName]['slice'] as Map)
@@ -57,6 +59,7 @@ class BridgeState extends ChangeNotifier {
     notifyListeners();
   }
 
+//checks if bridge already contains the key
   bool containsKey(String key) {
     return _data.containsKey(key);
   }
@@ -75,11 +78,16 @@ class BridgeState extends ChangeNotifier {
     }
   }
 
+  ///reads a Map from Memory
   BridgeModel readMap(String mapName, dynamic fieldKey, dynamic initial) {
     Map cache = read(mapName, {}).slice;
+
+    ///first checks if the provided key is already in memory
     if (cache.containsKey(fieldKey)) {
       return BridgeModel(cache[fieldKey], cache[fieldKey].runtimeType);
-    } else {
+    }
+    //and if not it takes the type of the initial value
+    else {
       return BridgeModel(initial, initial.runtimeType);
     }
   }

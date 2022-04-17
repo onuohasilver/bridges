@@ -1,4 +1,4 @@
-import 'package:bridges/state/befa_state.dart';
+import 'package:bridges/state/bridge_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
