@@ -1,4 +1,5 @@
-import 'package:bridgestate/state/befa_state.dart';
+import 'package:bridges/state/bridge_state.dart';
+
 import 'package:flutter/cupertino.dart';
 
 class BridgeState extends ChangeNotifier {
@@ -33,6 +34,7 @@ class BridgeState extends ChangeNotifier {
       [bool override = true, bool exception = false]) {
     Type savedType = slice.runtimeType;
 
+//checks if the type is same with the savedType if slice has been loaded previously into memory
     if (type != savedType) {
       throw ('Load' + BridgeErrors.unmatched(name, savedType, type));
     }
@@ -45,6 +47,7 @@ class BridgeState extends ChangeNotifier {
     notifyListeners();
   }
 
+  ///updates a Map on the bridge
   void updateMap(String sliceName, MapEntry mapEntry) {
     if (_data.containsKey(sliceName)) {
       (_data[sliceName]['slice'] as Map)
@@ -57,29 +60,40 @@ class BridgeState extends ChangeNotifier {
     notifyListeners();
   }
 
+//checks if bridge already contains the key
   bool containsKey(String key) {
     return _data.containsKey(key);
   }
 
   ///Retrieves a previously saved bridge slice
   BridgeModel read(String name, dynamic initial) {
+    //checks if the key "name" exists and then compares the types
     if (_data.containsKey(name)) {
       Type savedType = _data[name]['slice'].runtimeType;
       Type initialType = initial.runtimeType;
       if (initialType != savedType) {
         throw ('Read' + BridgeErrors.unmatched(name, savedType, initialType));
       }
+      //returns bridgemodel if key exists and there is no type conflict
       return BridgeModel(_data[name]['slice'], _data[name]['type']);
     } else {
+      //returns bridgemodel with initial and type
       return BridgeModel(initial, initial.runtimeType);
     }
   }
 
+  ///reads a Map from Memory
   BridgeModel readMap(String mapName, dynamic fieldKey, dynamic initial) {
     Map cache = read(mapName, {}).slice;
+
+    ///first checks if the provided key is already in memory
     if (cache.containsKey(fieldKey)) {
+      //returns bridgemodel if key exists and there is no type conflict
       return BridgeModel(cache[fieldKey], cache[fieldKey].runtimeType);
-    } else {
+    }
+    //and if not it takes the type of the initial value
+    else {
+      //returns bridgemodel with initial and type
       return BridgeModel(initial, initial.runtimeType);
     }
   }

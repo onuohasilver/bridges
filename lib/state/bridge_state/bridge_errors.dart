@@ -1,4 +1,6 @@
 class BridgeErrors {
+
+  //class of possible bridge errors
   static const String cannotOverride =
       'BridgeError: Cannot Override Previously set value. Try setting override to true.';
   static String unmatched(String name, Type? savedType, Type? initialType) {
