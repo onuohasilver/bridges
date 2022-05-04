@@ -1,5 +1,4 @@
-import 'package:bridges/bridges.dart';
-import 'package:bridges/state/bridge_base.dart';
+import 'package:bridgestate/bridges.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -61,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.home),
       ),
     );
   }
