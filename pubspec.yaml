@@ -1,6 +1,6 @@
 name: bridgestate
-description: State Managemnet layer for flutter applications.
-version: 0.0.1
+description: State Management layer for flutter applications.
+version: 0.0.2
 homepage: https://github.com/onuohasilver/bridges
 
 environment:

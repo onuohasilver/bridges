@@ -65,18 +65,16 @@ class BridgeState extends ChangeNotifier {
   }
 
   ///Retrieves a previously saved bridge slice
-  BridgeModel read(String name, dynamic initial) {
-    //checks if the key "name" exists and then compares the types
+  ///Retrieves a previously saved bridge slice
+  BridgeModel read(String name, dynamic initial, {bool forceType = true}) {
     if (_data.containsKey(name)) {
       Type savedType = _data[name]['slice'].runtimeType;
       Type initialType = initial.runtimeType;
-      if (initialType != savedType) {
+      if ((initialType != savedType) & forceType) {
         throw ('Read' + BridgeErrors.unmatched(name, savedType, initialType));
       }
-      //returns bridgemodel if key exists and there is no type conflict
       return BridgeModel(_data[name]['slice'], _data[name]['type']);
     } else {
-      //returns bridgemodel with initial and type
       return BridgeModel(initial, initial.runtimeType);
     }
   }
