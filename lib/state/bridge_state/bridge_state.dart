@@ -66,7 +66,7 @@ class BridgeState extends ChangeNotifier {
 
   ///Retrieves a previously saved bridge slice
   ///Retrieves a previously saved bridge slice
-  BridgeModel read(String name, dynamic initial, {bool forceType = true}) {
+  BridgeModel read(String name, dynamic initial, {bool forceType = false}) {
     if (_data.containsKey(name)) {
       Type savedType = _data[name]['slice'].runtimeType;
       Type initialType = initial.runtimeType;
