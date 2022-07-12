@@ -12,7 +12,7 @@ class BridgeWidgetTest extends StatelessWidget {
         builder: (context) {
           BridgeState bridge = Provider.of<BridgeState>(context);
 
-          WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
             run(bridge);
           });
           return const Placeholder();
