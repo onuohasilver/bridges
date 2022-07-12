@@ -30,11 +30,11 @@ class BridgeState extends ChangeNotifier {
 
   ///Loads a parsed name slice pair into the memory
   void load(String name, dynamic slice, Type type,
-      [bool override = true, bool exception = false]) {
+      [bool forceType = false, bool override = true, bool exception = false]) {
     Type savedType = slice.runtimeType;
 
 //checks if the type is same with the savedType if slice has been loaded previously into memory
-    if (type != savedType) {
+    if (forceType && (type != savedType)) {
       throw ('Load' + BridgeErrors.unmatched(name, savedType, type));
     }
     if (override) {
