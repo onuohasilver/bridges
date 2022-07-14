@@ -1,6 +1,6 @@
 name: bridgestate
 description: State Management layer for flutter applications.
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/onuohasilver/bridges
 
 environment:
@@ -17,7 +17,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
-
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
